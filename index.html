@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Elite Detail Co.</title>
+  
+	
+	
+	
+	<script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+</script>
+<script type="text/javascript">
+   (function(){
+      emailjs.init({
+        publicKey:"fRuaohPjI4KrDsATF",
+      });
+   })();
+</script>
+<script src="script.js"></script>
+	
+	
+	
+  <style>
+
+    :root {
+      --color-bg:    #0a0a0a;
+      --color-card:  #111111;
+      --color-accent:#e8c84a;
+      --color-text:  #f0ede6;
+      --color-muted: #888888;
+      --font-head:   'Bebas Neue', sans-serif;
+      --font-body:   'DM Sans', sans-serif;
+      --radius:      4px;
+    }
+
+    /* =============================================
+       RESET & BASE
+    ============================================= */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--color-bg);
+      color: var(--color-text);
+      font-family: 'Bebas Neue';
+  font-style: normal;
+  font-weight:0;
+      font-size: 16px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { display:block; width: 100%; object-fit: cover; }
+
+    /* =============================================
+       NAV
+    ============================================= */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 5%;
+      background: rgba(10,10,10,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid #1e1e1e;
+    }
+
+    .nav-logo {
+      font-family:Gotham, "Helvetica Neue", Helvetica, Arial, "sans-serif";
+      font-size: 1.6rem;
+      letter-spacing: 2px;
+      color: var(--color-accent);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--color-muted);
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--color-accent); }
+
+    /* =============================================
+       HERO
+    ============================================= */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 0 5% 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* ---- POZADIE HERA: nahraď gradientem alebo fotkou ----
+       Možnosť A (gradient): nechaj tak
+       Možnosť B (fotka): pridaj background-image: url('tvoja-fotka.jpg');
+                           a nastav background-size: cover; background-position: center;
+    ------------------------------------------------------- */
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+		background-image: url("img/image1.jpg");
+		backgrounda:
+        radial-gradient(ellipse 70% 60% at 70% 40%, #1a1a1a 0%, transparent 70%),
+        linear-gradient(135deg, #0a0a0a 0%, #1c1a14 50%, #0a0a0a 100%);
+      z-index: 0;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      left: 5%;
+      top: 20%;
+      width: 2px;
+      height: 55%;
+      background: var(--color-accent);
+      opacity: 0.4;
+      z-index: 1;
+    }
+
+    .hero-inner { position: relative; z-index: 2; max-width: 780px; }
+
+    .hero-tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--color-accent);
+      border: 1px solid var(--color-accent);
+      padding: 5px 14px;
+      border-radius: var(--radius);
+      margin-bottom: 28px;
+      animation: fadeUp 0.8s ease both;
+    }
+
+    .hero h1 {
+      font-family:Gotham, "Helvetica Neue", Helvetica, Arial, "sans-serif";
+      font-size: clamp(4rem, 10vw, 9rem);
+      line-height: 0.9;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      animation: fadeUp 0.9s 0.1s ease both;
+    }
+
+    .hero h1 span { color: var(--color-accent); }
+
+    .hero-sub {
+      margin-top: 28px;
+      font-size: 1.05rem;
+      color: var(--color-muted);
+      max-width: 480px;
+      font-weight: 300;
+      animation: fadeUp 1s 0.2s ease both;
+    }
+
+    .hero-cta {
+      margin-top: 44px;
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      animation: fadeUp 1.1s 0.3s ease both;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 34px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      border-radius: var(--radius);
+      transition: transform 0.2s, box-shadow 0.2s;
+      cursor: pointer;
+    }
+
+    .btn:hover { transform: translateY(-2px); }
+
+    .btn-primary {
+      background: var(--color-accent);
+      color: #0a0a0a;
+      font-weight: 700;
+    }
+
+    .btn-primary:hover { box-shadow: 0 8px 24px rgba(232,200,74,0.35); }
+
+    .btn-ghost {
+      border: 1px solid #333;
+      color: var(--color-text);
+    }
+
+    .btn-ghost:hover { border-color: var(--color-accent); color: var(--color-accent); }
+
+    /* =============================================
+       SECTIONS COMMON
+    ============================================= */
+    section { padding: 100px 5%; }
+
+    .section-tag {
+      font-size: 0.75rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--color-accent);
+      margin-bottom: 14px;
+    }
+
+    .section-title {
+      font-family:Gotham, "Helvetica Neue", Helvetica, Arial, "sans-serif";
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      line-height: 1;
+      margin-bottom: 16px;
+    }
+
+    .section-desc {
+      color: var(--color-muted);
+      max-width: 520px;
+      font-weight: 300;
+    }
+
+    /* =============================================
+       SERVICES
+    ============================================= */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2px;
+      margin-top: 56px;
+    }
+
+    .service-card {
+      background: var(--color-card);
+      padding: 48px 40px;
+      border: 1px solid #1e1e1e;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0;
+      width: 3px;
+      height: 0;
+      background: var(--color-accent);
+      transition: height 0.4s ease;
+    }
+
+    .service-card:hover::before { height: 100%; }
+    .service-card:hover { transform: translateY(-4px); border-color: #2a2a2a; }
+
+    .service-icon { font-size: 2.4rem; margin-bottom: 24px; }
+
+    .service-name {
+      font-family:Gotham, "Helvetica Neue", Helvetica, Arial, "sans-serif";
+      font-size: 1.8rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .service-desc {
+      font-size: 0.95rem;
+      color: var(--color-muted);
+      font-weight: 300;
+      line-height: 1.8;
+    }
+
+    .service-price {
+      margin-top: 28px;
+      font-family:Gotham, "Helvetica Neue", Helvetica, Arial, "sans-serif";
+      font-size: 2rem;
+      color: var(--color-accent);
+      letter-spacing: 1px;
+    }
+
+    /* =============================================
+       GALLERY
+    ============================================= */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: 260px 260px;
+      gap: 6px;
+      margin-top: 56px;
+    }
+
+    .gallery-item {
+      overflow: hidden;
+      border-radius: var(--radius);
+    }
+
+    .gallery-item:first-child { grid-row: span 2; }
+
+    .gallery-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.72rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #2a2a2a;
+      transition: transform 0.5s ease;
+    }
+
+    .gallery-item:hover .gallery-placeholder { transform: scale(1.09); }
+
+    .gp-1 { background: #161410; }
+    .gp-2 { background: #121212; }
+    .gp-3 { background: #0e0e0e; }
+    .gp-4 { background: #151515; }
+    .gp-5 { background: #0c0c0c; }
+
+    /* =============================================
+       PROCESS
+    ============================================= */
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 40px;
+      margin-top: 56px;
+    }
+
+    .step { display: flex; flex-direction: column; gap: 14px; }
+
+    .step-num {
+      font-family:Gotham, "Helvetica Neue", Helvetica, Arial, "sans-serif";
+      font-size: 4rem;
+      color: #1e1e1e;
+      line-height: 1;
+    }
+
+    .step-title {
+      font-family:Gotham, "Helvetica Neue", Helvetica, Arial, "sans-serif";
+      font-size: 1.2rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--color-accent);
+    }
+
+    .step-desc {
+      font-size: 0.9rem;
+      color: var(--color-muted);
+      font-weight: 300;
+    }
+
+    /* =============================================
+       TESTIMONIALS
+    ============================================= */
+    .testimonials { background: var(--color-card); }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin-top: 56px;
+    }
+
+    .testimonial {
+      background: #0a0a0a;
+      border: 1px solid #1e1e1e;
+      padding: 32px;
+      border-radius: var(--radius);
+      position: relative;
+    }
+
+    .testimonial::before {
+      content: '"';
+      font-family:Gotham, "Helvetica Neue", Helvetica, Arial, "sans-serif";
+      font-size: 6rem;
+      color: var(--color-accent);
+      opacity: 0.15;
+      position: absolute;
+      top: -10px;
+      left: 20px;
+      line-height: 1;
+    }
+
+    .testimonial-text {
+      font-size: 0.95rem;
+      color: var(--color-muted);
+      font-weight: 300;
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+
+    .testimonial-author { font-weight: 500; font-size: 0.9rem; color: var(--color-text); }
+    .testimonial-car { font-size: 0.8rem; color: var(--color-accent); letter-spacing: 1px; }
+
+    /* =============================================
+       CONTACT
+    ============================================= */
+    .contact-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      margin-top: 56px;
+      align-items: start;
+    }
+
+    .contact-info { display: flex; flex-direction: column; gap: 32px; }
+    .contact-block { display: flex; flex-direction: column; gap: 4px; }
+
+    .contact-label {
+      font-size: 0.72rem;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--color-accent);
+    }
+
+    .contact-value { font-size: 1.1rem; font-weight: 400; }
+
+    .contact-form { display: flex; flex-direction: column; gap: 16px; }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+    .form-field { display: flex; flex-direction: column; gap: 6px; }
+
+    .form-field label {
+      font-size: 0.75rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--color-muted);
+    }
+
+    .form-field input,
+    .form-field textarea,
+    .form-field select {
+      background: #111;
+      border: 1px solid #222;
+      color: var(--color-text);
+      font-family:Gotham, "Helvetica Neue", Helvetica, Arial, "sans-serif";
+      font-size: 0.95rem;
+      padding: 12px 16px;
+      border-radius: var(--radius);
+      outline: none;
+      transition: border-color 0.2s;
+      -webkit-appearance: none;
+    }
+
+    .form-field input:focus,
+    .form-field textarea:focus,
+    .form-field select:focus { border-color: var(--color-accent); }
+
+    .form-field textarea { min-height: 120px; resize: vertical; }
+
+    /* =============================================
+       FOOTER
+    ============================================= */
+    footer {
+      border-top: 1px solid #1e1e1e;
+      padding: 40px 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .footer-logo {
+      font-family:Gotham, "Helvetica Neue", Helvetica, Arial, "sans-serif";
+      font-size: 1.4rem;
+      letter-spacing: 2px;
+      color: var(--color-accent);
+    }
+
+    .footer-copy { font-size: 0.8rem; color: var(--color-muted); }
+
+    .footer-links { display: flex; gap: 24px; list-style: none; }
+
+    .footer-links a {
+      font-size: 0.8rem;
+      color: var(--color-muted);
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--color-accent); }
+
+    /* =============================================
+       ANIMACIE PRI OTVORENI STRANKY__________________________________________
+    ============================================= */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* =============================================
+       RESPONSIVE
+    ============================================= */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+      .gallery-item:first-child { grid-row: span 1; }
+      .contact-wrapper { grid-template-columns: 1fr; gap: 48px; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- =============================================
+       __________________________________________________________________________________________________________________________________________________________________________________________________________
+  ============================================= -->
+  <nav>
+    <div class="nav-logo">Elite Detail Co.</div>
+    <ul class="nav-links">
+      <li><a href="#services">Služby</a></li>
+      <li><a href="#gallery">Galéria</a></li>
+      <li><a href="#process">Postup</a></li>
+      <li><a href="#reviews">Recenzie</a></li>
+      <li><a href="#contact">Kontakt</a></li>
+    </ul>
+  </nav>
+
+
+  <!-- =============================================
+       HERO — zmeň nadpis, podnadpis, text tlačidiel
+  ============================================= -->
+  <section class="hero">
+    <div class="hero-inner">
+      <span class="hero-tag">Profesionálny car detailing</span>
+      <h1>Tvoje auto<br>zaslúži to<br><span>najlepšie.</span></h1>
+      <p class="hero-sub">
+        Starostlivosť o exteriér aj interiér tvojho auta s dôrazom na každý detail — precízne, spoľahlivo a s láskou k autám.
+      </p>
+      <div class="hero-cta">
+        <a href="#contact" class="btn btn-primary">Rezervovať</a>
+        <a href="#services" class="btn btn-ghost">Naše služby</a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- =============================================
+       SLUZBY pridaj alebo odstrán_________________________________________________________________________
+  ============================================= -->
+  <section id="services">
+    <p class="section-tag">Čo ponúkame</p>
+    <h2 class="section-title">Naše služby</h2>
+    <p class="section-desc">Každá služba je vykonaná s prvotriednou starostlivosťou a kvalitnými produktmi.</p>
+
+    <div class="services-grid">
+
+      <div class="service-card">
+        <div class="service-icon">🚿</div>
+        <div class="service-name">Exteriér detailing</div>
+        <p class="service-desc">Ručné umytie, ošetrenie laku, čistenie diskov a pneumatík, umytie okien a kompletný detailing vonkajšku auta až do posledného detailu.</p>
+        <div class="service-price">od 40 €</div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">✨</div>
+        <div class="service-name">Interiér detailing</div>
+        <p class="service-desc">Hĺbkové vysávanie, čistenie čalúnenia a kobercov, ošetrenie kože, leštenie plastov, dezinfekcia a eliminácia pachov pre dokonale čistý interiér.</p>
+        <div class="service-price">od 60 €</div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- =============================================
+      FOTKY V GALÉRII dole______________________________________________________________
+  ============================================= -->
+  <section id="gallery">
+    <h2 class="section-title">Naša práca</h2>
+
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <div class="gallery-placeholder gp-1"><img src="img/image1.jpg" alt="fotka"></div>
+      </div>
+      <div class="gallery-item">
+        <div class="gallery-placeholder gp-2"><img src="img/image1.jpg" alt="fotka"></div>
+      </div>
+      <div class="gallery-item">
+        <div class="gallery-placeholder gp-3"><img src="img/image1.jpg" alt="fotka"></div>
+      </div>
+      <div class="gallery-item">
+        <div class="gallery-placeholder gp-4"><img src="img/image1.jpg" alt="fotka"></div>
+      </div>
+      <div class="gallery-item">
+        <div class="gallery-placeholder gp-5"><img src="img/image1.jpg" alt="fotka"></div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- =============================================
+       PROCESS-------------------ZMEN AK SU INE KROKY--------------------
+  ============================================= -->
+  <section id="process">
+    <p class="section-tag">Ako to funguje?</p>
+    <h2 class="section-title">Náš postup</h2>
+
+    <div class="process-steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <div class="step-title">Objednaj sa</div>
+        <p class="step-desc">Vyplň kontaktný formulár alebo nám zavolaj — vyberieš si službu a termín.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <div class="step-title">Prehliadka</div>
+        <p class="step-desc">Po príchode si auto prehliadneme a dohodneme sa na najlepšom postupe.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <div class="step-title">Detailing</div>
+        <p class="step-desc">Pustíme sa do práce s prvotriednou starostlivosťou a kvalitnými produktmi.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <div class="step-title">Odovzdanie</div>
+        <p class="step-desc">Spoločne si auto skontrolujeme a ty odídeš spokojný — zaručujeme to.</p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- =============================================
+       ----------------------------------------------------------------RECENZIE--------------------------
+  ============================================= -->
+  <section id="reviews" class="testimonials">
+    <p class="section-tag">Spokojní zákazníci</p>
+    <h2 class="section-title">Čo hovoria</h2>
+
+    <div class="testimonials-grid"><!-- <<< ZMEN CI VEDLA SEBA ALEBO PODSEBA BUDU RECENZIE-->
+
+      <div class="testimonial">
+        <p class="testimonial-text">RECENZIA:</p>
+        <div class="testimonial-author">JOZO M.</div>
+        <div class="testimonial-car">BMW 5 Series</div>
+      </div>
+
+      <div class="testimonial">
+        <p class="testimonial-text">Interiér bol dôkladne vyčistený, zápach po psovi je preč. Rýchlo, profesionálne a za dobrú cenu.</p>
+        <div class="testimonial-author">JOZO M.</div>
+        <div class="testimonial-car">Volkswagen Tiguan</div>
+      </div>
+
+      <div class="testimonial">
+        <p class="testimonial-text">Exteriér sa leskol ako zrkadlo. Vidno, že na každom detaile záleží. Vrelo odporúčam!</p>
+        <div class="testimonial-author">JOZO M.</div>
+        <div class="testimonial-car">Škoda Octavia</div>
+      </div>
+		
+		<div class="testimonial">
+        <p class="testimonial-text">Exteriér sa leskol ako zrkadlo. Vidno, že na každom detaile záleží. Vrelo odporúčam!</p>
+        <div class="testimonial-author">JOZO M.</div>
+        <div class="testimonial-car">Škoda Octavia</div>
+      </div>
+		
+    </div>
+  </section>
+
+
+  <!-- =============================================
+       CONTACT — zmeň telefón, email, miesto, hodiny
+  ============================================= -->
+  <section id="contact">
+    <p class="section-tag">Kontaktuj nás</p>
+    <h2 class="section-title">Rezervuj termín</h2>
+
+    <div class="contact-wrapper">
+
+      <div class="contact-info">
+        <div class="contact-block">
+          <span class="contact-label">Telefón</span>
+          <span class="contact-value">+421 900 000 000</span>
+        </div>
+        <div class="contact-block">
+          <span class="contact-label">Email</span>
+          <span class="contact-value">info@elitedetail.sk</span>
+        </div>
+        <div class="contact-block">
+          <span class="contact-label">Miesto</span>
+          <span class="contact-value">mesto, Slovensko</span>
+        </div>
+        <div class="contact-block">
+          <span class="contact-label">Pracovná doba</span>
+          <span class="contact-value">Po – So: X:XX – X:XX</span>
+        </div>
+        <div class="contact-block">
+          <span class="contact-label">Instagram</span>
+          <span class="contact-value">@elitedetailco</span>
+        </div>
+      </div>
+
+		
+		
+      <div class="contact-form">
+        <div class="form-row">
+          <div class="form-field">
+            <label for="fname">Meno</label>
+            <input type="text" id="fname" placeholder="Ján" required>
+          </div>
+          <div class="form-field">
+            <label for="lname">Priezvisko</label>
+            <input type="text" id="lname" placeholder="Novák">
+          </div>
+        </div>
+        <div class="form-field">
+          <label for="phone">Telefónne číslo</label>
+          <input type="tel" id="phone" placeholder="+421 900 000 000" required>
+        </div>
+		  
+		  <div class="form-field">
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" placeholder="mail@gmail.com" >
+    </div>
+		  
+        <div class="form-field">
+          <label for="service">Služba</label>
+          <select id="service">
+            <option value="">— Vyber si službu —</option>
+            <option>Exteriér detailing</option>
+            <option>Interiér detailing</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label for="msg">Správa / Poznámky</label>
+          <textarea id="msg" placeholder="Povedz nám niečo o svojom aute..."></textarea>
+        </div>
+        <button type="submit" onClick="sendMail()" class="btn btn-primary" style="text-align:center;">Odoslať správu</button>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- =============================================
+       FOOTER
+  ============================================= -->
+  <footer>
+    <div class="footer-logo">Elite Detail Co.</div>
+    <ul class="footer-links">
+      <li><a href="#services">Služby</a></li>
+      <li><a href="#gallery">Galéria</a></li>
+      <li><a href="#contact">Kontakt</a></li>
+    </ul>
+    <p class="footer-copy">© 2026 Elite Detail Co. Všetky práva vyhradené.</p>
+  </footer>
+
+</body>
+</html>
