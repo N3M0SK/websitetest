@@ -5,10 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
  	<title>Elite Detail Co.</title>
 	<link rel="icon" type="image/icon" href="img/picture1.png">
-  
-
-	
-  <style type="text/css">
+ 
+  <style type="text/css" > 
 	  
 	  
 	  
@@ -73,7 +71,6 @@
       list-style: none;
 	  align-items: center;
     }
-	  
 
     .nav-links a {
       font-size: 0.85rem;
@@ -130,7 +127,12 @@
     }
 
 	  
-    .hero-inner { position: relative; z-index: 2; max-width: 780px; }
+    .hero-inner { 
+		position: relative;
+		z-index: 2;
+		max-width: 780px;
+	    margin-left: 10px;
+	  }
 	  
 	 
 
@@ -143,18 +145,20 @@
       border: 1px solid var(--color-accent);
       padding: 5px 14px;
       border-radius: var(--radius);
-      margin-bottom: 28px;
+      margin-bottom: 29px;
 	  margin-top: 150px;
       animation: fadeUp 0.8s ease both;
+
     }
 
     .hero h1 {
       font-family:Gotham, "Helvetica Neue", Helvetica, Arial, "sans-serif";
       font-size: 125px;
-      line-height: 0.9;
+      line-height: 1;
       letter-spacing: 2px;
       text-transform: uppercase;
       animation: fadeUp 0.9s 0.1s ease both;
+	  margin-right: 5px
     }
 
     .hero h1 span { color: var(--color-accent); }
@@ -371,6 +375,8 @@
       color: var(--color-muted);
       font-weight: 300;
     }
+	  
+	
 
     /* =============================================
        TESTIMONIALS
@@ -506,7 +512,7 @@
 
     /* =============================================
        ANIMACIE PRI OTVORENI STRANKY__________________________________________
-    ============================================= */
+    ============================================= */ 
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(24px); }
       to   { opacity: 1; transform: translateY(0); }
