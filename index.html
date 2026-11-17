@@ -3,12 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Elite Detail Co.</title>
+ 	<title>Elite Detail Co.</title>
   
 
 	
-  <style>
-
+  <style type="text/css">
+	  
+	  
+	  
+	  
     :root {
       --color-bg:    #0a0a0a;
       --color-card:  #111111;
@@ -27,7 +30,7 @@
     html { scroll-behavior: smooth; }
 
     body {
-      background: var(--color-bg);
+	background: var(--color-bg);
       color: var(--color-text);
       font-family: 'Bebas Neue';
   font-style: normal;
@@ -61,13 +64,16 @@
       font-size: 1.6rem;
       letter-spacing: 2px;
       color: var(--color-accent);
+	  
     }
 
     .nav-links {
       display: flex;
       gap: 32px;
       list-style: none;
+	  align-items: center;
     }
+	  
 
     .nav-links a {
       font-size: 0.85rem;
@@ -92,7 +98,8 @@
       position: relative;
       overflow: hidden;
     }
-
+	
+	  
     /* ---- POZADIE HERA: nahraď gradientem alebo fotkou ----
        Možnosť A (gradient): nechaj tak
        Možnosť B (fotka): pridaj background-image: url('tvoja-fotka.jpg');
@@ -122,11 +129,16 @@
       z-index: 1;
     }
 
+	  
     .hero-inner { position: relative; z-index: 2; max-width: 780px; }
+	  
+	  .hero-inner h1{
+		  font-size: 600px
+	  }
 
     .hero-tag {
       display: inline-block;
-      font-size: 0.75rem;
+      font-size: 20px;
       letter-spacing: 3px;
       text-transform: uppercase;
       color: var(--color-accent);
@@ -134,6 +146,7 @@
       padding: 5px 14px;
       border-radius: var(--radius);
       margin-bottom: 28px;
+	  margin-top: 150px;
       animation: fadeUp 0.8s ease both;
     }
 
@@ -178,7 +191,7 @@
     }
 
     .btn:hover { transform: translateY(-2px); }
-
+	
     .btn-primary {
       background: var(--color-accent);
       color: #0a0a0a;
@@ -294,6 +307,16 @@
       overflow: hidden;
       border-radius: var(--radius);
     }
+	  
+	  .big_picture1{
+		  width:950px;
+		  height: auto;
+	  }
+	  
+	  .small_picture1{
+		  width:720px;
+		  height:auto;
+	  }
 
     .gallery-item:first-child { grid-row: span 2; }
 
@@ -509,7 +532,7 @@
        __________________________________________________________________________________________________________________________________________________________________________________________________________
   ============================================= -->
   <nav>
-    <div class="nav-logo">Elite Detail Co.</div>
+    <div class="nav-logo"><a href="index.html" title="DOMOV">Elite Detail Co.</a></div>
     <ul class="nav-links">
       <li><a href="#services">Služby</a></li>
       <li><a href="#gallery">Galéria</a></li>
@@ -564,27 +587,26 @@
   </section>
 
 
-  <!-- =============================================
-      FOTKY V GALÉRII dole______________________________________________________________
-  ============================================= -->
+  <!-- =============================================FOTKY V GALÉRII dole______________________________________________________________============================================= -->
+  
   <section id="gallery">
     <h2 class="section-title">Naša práca</h2>
 
     <div class="gallery-grid">
       <div class="gallery-item">
-        <div class="gallery-placeholder gp-1"><img src="img/picture1.jpg" alt="fotka"></div>
+        <div class="gallery-placeholder gp-1"><img class="big_picture1" src="img/picture1.png" alt="fotka"></div>
       </div>
       <div class="gallery-item">
-        <div class="gallery-placeholder gp-2"><img src="img/image1.jpg" alt="fotka"></div>
+        <div class="gallery-placeholder gp-2"><img class="small_picture1" src="img/picture1.png" alt="fotka"></div>
       </div>
       <div class="gallery-item">
-        <div class="gallery-placeholder gp-3"><img src="img/image1.jpg" alt="fotka"></div>
+        <div class="gallery-placeholder gp-3"><img class="small_picture1" src="img/picture1.png" alt="fotka"></div>
       </div>
       <div class="gallery-item">
-        <div class="gallery-placeholder gp-4"><img src="img/image1.jpg" alt="fotka"></div>
+        <div class="gallery-placeholder gp-4"><img class="small_picture1" src="img/picture1.png" alt="fotka"></div>
       </div>
       <div class="gallery-item">
-        <div class="gallery-placeholder gp-5"><img src="img/image1.jpg" alt="fotka"></div>
+        <div class="gallery-placeholder gp-5"><img class="small_picture1" src="img/picture1.png" alt="fotka"></div>
       </div>
     </div>
   </section>
